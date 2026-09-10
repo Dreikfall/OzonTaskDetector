@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Ozon Task Detector",
+  "version": "1.0.0",
+  "description": "Определяет проверочные задания на платформе модерации",
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://cm.ozon.ru/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://cm.ozon.ru/tasks/review/*",
+        "https://cm.ozon.ru/tasks/reviewtravel/*",
+        "https://cm.ozon.ru/tasks/comment/*",
+        "https://cm.ozon.ru/tasks/question/*",
+        "https://cm.ozon.ru/tasks/answer/*",
+        "https://cm.ozon.ru/tasks/video/*",
+        "https://cm.ozon.ru/tasks/photo/*",
+        "https://cm.ozon.ru/tasks/selection/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

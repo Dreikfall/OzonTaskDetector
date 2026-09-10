@@ -1,0 +1,121 @@
+/* styles.css - Стили для индикатора на странице задания */
+
+/* Индикатор типа задания (зеленый/красный) */
+#task-type-indicator {
+    /* Фиксированное положение - не исчезает при прокрутке */
+    position: fixed;
+    
+    /* Отступы от края экрана - сдвигаем левее */
+    top: 20px;
+    right: 150px;  /* Было 20px, теперь 150px - сдвиг влево */
+    
+    /* Высокий приоритет, чтобы был поверх всех элементов страницы */
+    z-index: 999999;
+    
+    /* Шрифт и отступы - делаем компактнее */
+    font-family: Arial, sans-serif;
+    font-size: 12px;  /* Уменьшаем размер шрифта */
+    padding: 8px 14px;  /* Уменьшаем внутренние отступы */
+    border-radius: 8px;  /* Чуть меньше скругление */
+    
+    /* Тень для объема */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    
+    /* Анимация появления */
+    animation: slideInFromRight 0.3s ease-out;
+}
+
+/* Зелёный стиль для обычного задания */
+#task-type-indicator.regular {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #45a049;
+}
+
+/* Красный стиль для проверочного задания */
+#task-type-indicator.control {
+    background-color: #f44336;
+    color: white;
+    border: 2px solid #da190b;
+    
+    /* Мигающая тень для привлечения внимания */
+    animation: slideInFromRight 0.3s ease-out, pulseShadow 1s infinite;
+}
+
+/* Всплывающее окно предупреждения */
+#control-warning {
+    /* Фиксированное положение по центру экрана */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+    /* Сдвигаем ровно в центр */
+    transform: translate(-50%, -50%);
+    
+    /* Высокий приоритет */
+    z-index: 1000000;
+    
+    /* Внешний вид */
+    background-color: white;
+    border: 3px solid #f44336;
+    border-radius: 15px;
+    padding: 30px;
+    
+    /* Тень */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
+    /* Шрифт */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    
+    /* Анимация появления */
+    animation: fadeInScale 0.3s ease-out;
+}
+
+/* Заголовок предупреждения */
+#control-warning h2 {
+    color: #f44336;
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+/* Текст предупреждения */
+#control-warning p {
+    color: #666;
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+/* Анимация: появление справа */
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Анимация: появление с увеличением */
+@keyframes fadeInScale {
+    from {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Анимация: мигающая тень для проверочного задания */
+@keyframes pulseShadow {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(244, 67, 54, 0.6);
+    }
+}
