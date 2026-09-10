@@ -63,12 +63,12 @@ function showControlWarning(ageDays, taskType) {
     // Добавляем на страницу
     document.body.appendChild(warning);
     
-    // Автоматически скрываем через 5 секунд
+    // Автоматически скрываем через 3 секунды
     setTimeout(() => {
         if (warning.parentElement) {
             warning.remove();
         }
-    }, 5000);
+    }, 3000);
 }
 
 // Сохраняем данные о задании в фоновый скрипт
