@@ -68,7 +68,7 @@ function showControlWarning(ageDays, taskType) {
         if (warning.parentElement) {
             warning.remove();
         }
-    }, 3000);
+    }, 2500);
 }
 
 // Сохраняем данные о задании в фоновый скрипт
